@@ -1,65 +1,118 @@
-import Image from "next/image";
+"use client";
+
+import Loader from '@/components/dom/Loader';
+import SceneWrapper from '@/components/canvas/SceneWrapper';
+import HeroUI from '@/components/dom/HeroUI';
+import FeatureCard from '@/components/dom/FeatureCard';
+import Navbar from '@/components/dom/Navbar';
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+    <main className="relative w-full bg-[#030305] text-white font-sans">
+      <Loader />
+      <Navbar />
+      <SceneWrapper />
+      
+      <div className="relative w-full z-10 pointer-events-none">
+        
+        {/* EXISTING HERO (Untouched) */}
+        <section id="overview" className="relative h-[120vh] w-full">
+          <HeroUI />
+        </section>
+
+        {/* 1. Features */}
+        <section id="features" className="relative h-[100vh] w-full">
+          <FeatureCard 
+            badge="01 / 06"
+            title="Micro OLED Display" 
+            description="Dual ultra-high-resolution displays delivering unmatched clarity."
+            points={[
+              {
+                title: "Micro OLED",
+                desc: "Unmatched clarity and precision engineering."
+              }
+            ]}
+            align="right"
+          />
+        </section>
+
+        {/* 2. Tech Specs */}
+        <section id="tech-specs" className="relative h-[100vh] w-full">
+          <FeatureCard 
+            badge="02 / 06"
+            title="Technical Specifications" 
+            description="Resolution 23 Million Pixels, Refresh Rate 90Hz, Weight 600g."
+            points={[
+              {
+                title: "Specs Overview",
+                desc: "Micro OLED, 120° FOV, Glass, Aluminum, Fabric."
+              }
+            ]}
+            align="left"
+          />
+        </section>
+
+        {/* 3. Experience */}
+        <section id="experience" className="relative h-[100vh] w-full">
+          <FeatureCard 
+            badge="03 / 06"
+            title="Spatial Computing" 
+            description="Eye Tracking, Hand Tracking, Gesture Navigation."
+            points={[
+              {
+                title: "Immersive Interaction",
+                desc: "Immersive Workspace and Entertainment."
+              }
+            ]}
+            align="right"
+          />
+        </section>
+
+        {/* 4. Comfort */}
+        <section id="comfort" className="relative h-[100vh] w-full">
+          <FeatureCard 
+            badge="04 / 06"
+            title="Comfort" 
+            description="Premium fabric and weight distribution."
+            points={[
+              {
+                title: "Personalized Fit",
+                desc: "Padding, Fit, Breathability."
+              }
+            ]}
+            align="left"
+          />
+        </section>
+
+        {/* 5. Spatial Audio */}
+        <section id="audio" className="relative h-[100vh] w-full">
+          <FeatureCard 
+            badge="05 / 06"
+            title="Spatial Audio" 
+            description="Beamforming microphones and noise reduction."
+            points={[
+              {
+                title: "Immersive Sound",
+                desc: "Crystal clear Spatial Audio."
+              }
+            ]}
+            align="right"
+          />
+        </section>
+
+        {/* 6. Pre-order */}
+        <section id="pre-order" className="relative h-[100vh] w-full flex items-center justify-center">
+          <div className="pointer-events-auto">
+            <FeatureCard 
+              badge="06 / 06"
+              title="Ready to step inside?" 
+              description="Pre-order your Aether One today and redefine your reality."
+              align="center"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+          </div>
+        </section>
+        
+      </div>
+    </main>
   );
 }
