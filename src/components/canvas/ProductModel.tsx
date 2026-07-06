@@ -43,18 +43,14 @@ export default function ProductModel() {
         }
       });
 
-      // Normalization
-      const box = new THREE.Box3().setFromObject(scene);
-      const size = new THREE.Vector3();
-      box.getSize(size);
-      const maxDim = Math.max(size.x, size.y, size.z);
-      const scale = 2 / maxDim; // Standardizes size so it fits perfectly in the 45-55% viewport setup
-      scene.scale.setScalar(scale);
+      // Ensure scale is exactly 1 (raw original size) so production matches local perfectly
+      scene.scale.setScalar(1);
 
-      const scaledBox = new THREE.Box3().setFromObject(scene);
+      // Perfectly center the model natively based on its raw dimensions
+      const box = new THREE.Box3().setFromObject(scene);
       const center = new THREE.Vector3();
-      scaledBox.getCenter(center);
-      scene.position.sub(center); // perfectly center the model natively
+      box.getCenter(center);
+      scene.position.sub(center);
     }
   }, [scene]);
 
